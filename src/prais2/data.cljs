@@ -711,8 +711,8 @@
     [:h4 {:style {:color "orange"}} "What does this mean?"]
     (let [ap (rum/react core/app)
           selected-row content/sample-hospital]
-      (map-indexed key-with [(annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:inner} "We expect the hospital's survival rate to be inside this bar 19 times out of 20")
-                             (annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:outer} "We expect the hospital's survival rate to be inside this bar 998 times out of a 1000")
+      (map-indexed key-with [(annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:inner} "Predicted range: this is where we expect a hospital’s survival rate to be 19 times out of 20")
+                             (annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:outer} "Extended predicted range: this is where we expect a hospital’s survival rate to be 998 times out of 1000")
                              (annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:dot} "The dot indicates the observed survival rate")
                              #_(annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:outer :inner :dot} "when combined")
                              #_(explain-interpretation)
