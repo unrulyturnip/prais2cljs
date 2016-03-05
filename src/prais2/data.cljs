@@ -688,13 +688,13 @@
      [:.data-summary
       [:p {:key 1} "The hospital performed "
        [:b (:n-ops selected-row) "  operations. "]]
-      [:p {:key 2} "After 30 days there were "
+      [:p {:key 2} "Measuring 30 days post surgery, "
        [:b {:key 1} (:n-survivors selected-row) " survivors "]
        "and "
        [:b {:key 2} (:n-deaths selected-row) " deaths"]
        " had been recorded. "]
       [:p {:key 3}
-       "The observed 30 day survival rate was " [:b (:survival-rate selected-row) "%"] "."]
+       "The hospital's 30 day survival rate was " [:b (:survival-rate selected-row) "%"] "."]
       ])))
 
 (rum/defc hospital-header < rum/static
@@ -711,8 +711,8 @@
     [:h4 {:style {:color "orange"}} "What does this mean?"]
     (let [ap (rum/react core/app)
           selected-row content/sample-hospital]
-      (map-indexed key-with [(annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:inner} "We expect the hospital's survival rate to be inside this bar 19 times out of 20")
-                             (annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:outer} "We expect the hospital's survival rate to be inside this bar 998 times out of a 1000")
+      (map-indexed key-with [(annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:inner} "Predicted range: this is where we expect a hospital’s survival rate to be 19 times out of 20")
+                             (annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:outer} "Extended predicted range: this is where we expect a hospital’s survival rate to be 998 times out of 1000")
                              (annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:dot} "The dot indicates the observed survival rate")
                              #_(annotated-chart-cell selected-row (:detail-slider-axis-value ap) #{:outer :inner :dot} "when combined")
                              #_(explain-interpretation)
